@@ -1,6 +1,7 @@
 """
 Module for testing zipping and unzipping of files
 """
+import os
 import zipfile
 import shutil
 
@@ -24,7 +25,7 @@ zip_obj = zipfile.ZipFile('compressed_file.zip', 'r')
 zip_obj.extractall('decompressed_folder')
 
 # zipping the whole folder
-folder_to_zip = '/Users/ihont/repos/python_exercises/decompressed_folder'
+folder_to_zip = os.getcwd() + '/decompressed_folder'
 output_filename = 'new_file'
 shutil.make_archive(output_filename, 'zip', folder_to_zip)
 
