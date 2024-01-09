@@ -19,8 +19,14 @@ compressed_file.write('file_1.txt', compress_type=zipfile.ZIP_DEFLATED)
 compressed_file.write('file_2.txt', compress_type=zipfile.ZIP_DEFLATED)
 compressed_file.close()
 
-# unzipping files
+# unzipping the folder
 zip_obj = zipfile.ZipFile('compressed_file.zip', 'r')
 zip_obj.extractall('decompressed_folder')
 
 # zipping the whole folder
+folder_to_zip = '/Users/ihont/repos/python_exercises/decompressed_folder'
+output_filename = 'new_file'
+shutil.make_archive(output_filename, 'zip', folder_to_zip)
+
+# unzipping the folder
+shutil.unpack_archive('new_file.zip', 'new_decompressed_folder', 'zip')
