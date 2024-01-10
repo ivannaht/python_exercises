@@ -1,10 +1,3 @@
-def calc_sum(*args):
-    return sum(args)
-
-
-print(calc_sum(5, 10, 15))
-
-
 def double_numbers(*args):
     list_doubles = []
     for arg in args:
@@ -23,6 +16,14 @@ def select_color(**kwargs):
 
 
 print(select_color(color='green', taste='sweet'))
+
+
+def show_dict(**kwargs):
+    for key, value in kwargs.items():
+        print("The key is %s, the value is %s" % (key, value))
+
+
+show_dict(color='green', taste='sweet', fruit='apple')
 
 
 def convert_currency(*args, **kwargs):
