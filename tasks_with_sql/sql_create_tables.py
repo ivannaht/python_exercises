@@ -4,7 +4,7 @@ from sqlalchemy.types import Integer, Unicode, UnicodeText
 from sqlalchemy.schema import ForeignKey
 
 
-engine = create_engine("postgresql+psycopg2://postgres:333333@localhost/mydatabase")
+engine = create_engine("postgresql+psycopg2://p:3@localhost/mydatabase")
 metadata = MetaData()
 
 countries_table = Table("countries",
