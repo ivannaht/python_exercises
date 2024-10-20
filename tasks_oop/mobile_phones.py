@@ -1,5 +1,6 @@
 class Device:
     count_of_devices = 0
+
     def __init__(self, model):
         self.model = model
         Device.count_of_devices += 1
@@ -43,6 +44,7 @@ assert mob_phone2.turn_off() == 'Mobile phone iPhone16 is turned off'
 
 assert MobilePhone.count_of_phones == 2
 assert mob_phone2.owner == 'Emilia'
+
 
 class Laptop(Device):
     device = 'Laptop'
