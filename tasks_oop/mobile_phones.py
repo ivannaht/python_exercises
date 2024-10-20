@@ -1,15 +1,17 @@
 class Device:
+    count_of_devices = 0
     def __init__(self, model):
         self.model = model
+        Device.count_of_devices += 1
 
 
 class MobilePhone(Device):
     device = 'Mobile phone'
-    count_of_devices = 0
+    count_of_phones = 0
 
     def __init__(self, model):
         super().__init__(model)
-        self.__class__.count_of_devices += 1
+        self.__class__.count_of_phones += 1
 
     def turn_on(self):
         return f'{self.__class__.device} {self.model} is turned on'
@@ -39,16 +41,16 @@ assert mob_phone2.call_number('011-222-4444') == 'calling 011-222-4444 from iPho
 assert mob_phone1.turn_off() == 'Mobile phone Samsung S22 is turned off'
 assert mob_phone2.turn_off() == 'Mobile phone iPhone16 is turned off'
 
-assert MobilePhone.count_of_devices == 2
+assert MobilePhone.count_of_phones == 2
 assert mob_phone2.owner == 'Emilia'
 
 class Laptop(Device):
     device = 'Laptop'
-    count_of_devices = 0
+    count_of_laptops = 0
 
     def __init__(self, model):
         super().__init__(model)
-        self.__class__.count_of_devices += 1
+        self.__class__.count_of_laptops += 1
 
     def turn_on(self):
         return f'{self.__class__.device} {self.model} is turned on'
@@ -70,5 +72,6 @@ print('contents of laptop2:', laptop2.__dict__)
 print('contents of class:', Laptop.__dict__)
 print('Device category:', laptop1.__class__.device)
 
-assert Laptop.count_of_devices == 3
+assert Laptop.count_of_laptops == 3
 assert laptop2.owner == 'Adelina'
+assert Device.count_of_devices == 5
