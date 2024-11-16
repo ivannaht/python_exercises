@@ -1,16 +1,21 @@
-random_number = int(input("Please enter a random number"))
+def fizz_buzz(number) -> str:
+    """
+    fizz_buzz function
+    """
 
+    if not isinstance(number, int):
+        raise TypeError
 
-def fizz_buzz(random_number):
-    for num in range(0, random_number):
-        if num % 3 == 0 and num % 5 == 0:
-            print("FizzBuzz")
-        elif num % 3 == 0:
-            print("Fizz")
-        elif num % 5 == 0:
-            print("Buzz")
-        else:
-            print(num)
+    if number == 0:
+        raise ValueError
 
+    if number % 15 == 0:
+        result = "FizzBuzz"
+    elif number % 3 == 0:
+        result = "Fizz"
+    elif number % 5 == 0:
+        result = "Buzz"
+    else:
+        result = str(number)
 
-fizz_buzz(random_number)
+    return result
