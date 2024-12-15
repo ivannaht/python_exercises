@@ -24,3 +24,12 @@ def test_user_data(api_context: APIRequestContext):
                                     'stateCode': 'AL', 'postalCode': '32822', 'coordinates':
                                         {'lat': 45.289366, 'lng': 46.832664}, 'country': 'United States'}
 
+
+def test_user_search(api_context: APIRequestContext):
+    query = 'Sophia'
+    response = api_context.get(f'/users/search?q={query}')
+
+    selected_users = response.json()
+
+    for user in selected_users['users']:
+        assert query in user['firstName']
