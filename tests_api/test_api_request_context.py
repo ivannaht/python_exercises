@@ -33,3 +33,45 @@ def test_user_search(api_context: APIRequestContext):
 
     for user in selected_users['users']:
         assert query in user['firstName']
+
+
+def test_create_user(api_context: APIRequestContext):
+    response = api_context.post(
+        'users/add',
+        headers={'Content-Type': 'application/json'},
+        data={
+            'firstName': 'Ilona',
+            'lastName': 'Green',
+            'age': 21
+        }
+    )
+    user_data = response.json()
+
+    assert user_data['firstName'] == 'Ilona'
+    assert user_data['lastName'] == 'Green'
+    assert user_data['age'] == 21
+
+
+def test_update_user(api_context: APIRequestContext):
+    response = api_context.put(
+        'users/1',
+
+        data={
+            'firstName': 'Emma',
+            'lastName': 'Gamer',
+            'age': 25
+        }
+    )
+    user_data = response.json()
+
+    assert user_data['firstName'] == 'Emma'
+    assert user_data['lastName'] == 'Gamer'
+    assert user_data['age'] == 25
+
+
+def test_delete_user(api_context: APIRequestContext):
+    response = api_context.delete('users/1')
+
+    result = response.json()
+
+    assert result['isDeleted'] is True
